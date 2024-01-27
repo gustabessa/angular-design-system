@@ -1,5 +1,11 @@
-<ds-header
-  image="assets/angular-logo.svg"
-  (menuOpen)="layoutStore.toggleMenu()"
-></ds-header>
-<ng-content></ng-content>
+<div class="min-h-dvh flex flex-col">
+  <ds-header
+    class="flex"
+    image="assets/angular-logo.svg"
+    (menuOpen)="layoutStore.toggleMenu()"
+  ></ds-header>
+  <div class="content bg-primary flex-1">
+    <ds-divider></ds-divider>
+    <ng-content></ng-content>
+  </div>
+</div>
