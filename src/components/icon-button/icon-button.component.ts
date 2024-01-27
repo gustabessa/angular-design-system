@@ -5,15 +5,8 @@ import {
   EventEmitter,
   Output,
 } from '@angular/core';
-
-type ColorTypes =
-  | number
-  | 'primary'
-  | 'secondary'
-  | 'contrast'
-  | 'contrast-100'
-  | 'contrast-200'
-  | 'contrast-300';
+import { ThemeColors } from '@shared/types';
+import { getThemeColor } from '@shared/functions';
 
 @Component({
   standalone: true,
@@ -26,20 +19,13 @@ export class IconButtonComponent {
 
   sizePx = input.required<number>();
 
-  color = input<ColorTypes>();
-
-  colorValue = computed(() => {
-    if (Number.isNaN(Number(this.color()))) {
-      return `var(--${this.color()})`;
-    }
-    return this.color();
-  });
+  iconColor = input<ThemeColors>('contrast');
 
   inlineStyle = computed(
     () => `-webkit-mask: url(${this.icon()}) no-repeat 50% 50%;
             mask: url(${this.icon()}) no-repeat 50% 50%;
             mask-size: cover;
-            background-color: ${this.colorValue()};
+            background-color: ${getThemeColor(this.iconColor)};
             height: ${this.sizePx()}px;
             width: ${this.sizePx()}px`,
   );
