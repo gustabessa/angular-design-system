@@ -1,10 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
+import { IconButtonComponent } from '../icon-button/icon-button.component';
 
 @Component({
   selector: 'ds-header',
   standalone: true,
-  imports: [],
+  imports: [IconButtonComponent],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
-export class HeaderComponent {}
+export class HeaderComponent {
+  image = input<string>();
+}

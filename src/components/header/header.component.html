@@ -1,1 +1,21 @@
-<p>header works!</p>
+<div class="bg-primary w-full flex justify-between px-4 py-2">
+  <ds-icon-button
+    icon="assets/burger-menu.svg"
+    color="contrast"
+    [sizePx]="40"
+  ></ds-icon-button>
+  @if (image(); as image) {
+  <img class="h-[50px]" alt="Logotipo" [src]="image" />
+  }
+  <div class="flex items-center">
+    <span class="text-contrast-300 block">
+      developed by
+      <a
+        class="underline decoration-solid"
+        href="https://github.com/gustabessa"
+        target="_blank"
+        >gustabessa</a
+      >
+    </span>
+  </div>
+</div>
