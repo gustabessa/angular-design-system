@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { HeaderComponent } from '@components';
 import { IconButtonComponent } from '../../components/icon-button/icon-button.component';
+import { LayoutStore } from './layout.signal-store';
 
 @Component({
   selector: 'ds-layout',
@@ -9,4 +10,6 @@ import { IconButtonComponent } from '../../components/icon-button/icon-button.co
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.scss',
 })
-export class LayoutComponent {}
+export class LayoutComponent {
+  layoutStore = inject(LayoutStore);
+}

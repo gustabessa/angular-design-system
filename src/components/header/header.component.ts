@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, EventEmitter, Output, input } from '@angular/core';
 import { IconButtonComponent } from '../icon-button/icon-button.component';
 
 @Component({
@@ -10,4 +10,6 @@ import { IconButtonComponent } from '../icon-button/icon-button.component';
 })
 export class HeaderComponent {
   image = input<string>();
+
+  @Output() menuOpen = new EventEmitter<void>();
 }

@@ -1,2 +1,5 @@
-<ds-header image="assets/angular-logo.svg"></ds-header>
+<ds-header
+  image="assets/angular-logo.svg"
+  (menuOpen)="layoutStore.toggleMenu()"
+></ds-header>
 <ng-content></ng-content>

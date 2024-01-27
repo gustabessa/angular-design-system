@@ -3,6 +3,7 @@
     icon="assets/burger-menu.svg"
     color="contrast"
     [sizePx]="40"
+    (clicked)="menuOpen.emit()"
   ></ds-icon-button>
   @if (image(); as image) {
   <img class="h-[50px]" alt="Logotipo" [src]="image" />

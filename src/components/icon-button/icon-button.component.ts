@@ -1,4 +1,10 @@
-import { Component, input, computed } from '@angular/core';
+import {
+  Component,
+  input,
+  computed,
+  EventEmitter,
+  Output,
+} from '@angular/core';
 
 type ColorTypes =
   | number
@@ -37,4 +43,6 @@ export class IconButtonComponent {
             height: ${this.sizePx()}px;
             width: ${this.sizePx()}px`,
   );
+
+  @Output() clicked = new EventEmitter<MouseEvent>();
 }
