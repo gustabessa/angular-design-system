@@ -6,7 +6,9 @@
     "paths": {
       "@feature": ["./src/feature"],
       "@components": ["./src/components"],
-      "@shared/*": ["./src/shared/*"]
+      "@components/*": ["./src/components/*"],
+      "@shared/*": ["./src/shared/*"],
+      "@pages": ["./src/pages"]
     },
     "forceConsistentCasingInFileNames": true,
     "strict": true,
