@@ -4,8 +4,8 @@
     image="assets/angular-logo.svg"
     (menuOpen)="layoutStore.toggleMenu()"
   ></ds-header>
-  <div class="content bg-primary flex-1">
-    <ds-divider></ds-divider>
+  <main class="bg-primary flex-1">
+    <ds-divider [spacingTop]="'0px'" [spacingBottom]="'2em'"></ds-divider>
     <ng-content></ng-content>
-  </div>
+  </main>
 </div>
