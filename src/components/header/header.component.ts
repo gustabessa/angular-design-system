@@ -1,10 +1,11 @@
 import { Component, EventEmitter, Output, input } from '@angular/core';
-import { IconButtonComponent } from '../icon-button/icon-button.component';
+import { ButtonComponent } from '../button/button.component';
+import { IconComponent } from '../icon/icon.component';
 
 @Component({
   selector: 'ds-header',
   standalone: true,
-  imports: [IconButtonComponent],
+  imports: [ButtonComponent, IconComponent],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })

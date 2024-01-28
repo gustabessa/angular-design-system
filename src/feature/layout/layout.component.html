@@ -9,6 +9,7 @@
     (menuOpen)="layoutStore.toggleMenu()"
   ></ds-header>
   <main class="bg-primary flex-1 pb-8">
+    <ds-drawer [opened]="layoutStore.menuOpen()"></ds-drawer>
     <ds-divider [spacingTop]="'0px'" [spacingBottom]="'2em'"></ds-divider>
     <ng-content></ng-content>
   </main>

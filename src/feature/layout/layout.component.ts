@@ -1,8 +1,8 @@
 import { Component, inject } from '@angular/core';
 import {
   HeaderComponent,
-  IconButtonComponent,
   DividerComponent,
+  DrawerComponent,
 } from '@components';
 import { LayoutStore } from './layout.signal-store';
 import { MediaService } from '@shared/services';
@@ -10,7 +10,7 @@ import { MediaService } from '@shared/services';
 @Component({
   selector: 'ds-layout',
   standalone: true,
-  imports: [HeaderComponent, IconButtonComponent, DividerComponent],
+  imports: [HeaderComponent, DividerComponent, DrawerComponent],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.scss',
 })
