@@ -1,12 +1,14 @@
 <div class="bg-primary w-full flex justify-between px-4 py-2">
-  <ds-icon-button
-    icon="assets/burger-menu.svg"
-    [sizePx]="40"
-    (clicked)="menuOpen.emit()"
-  ></ds-icon-button>
-  @if (image(); as image) {
-  <img class="h-[50px]" alt="Logotipo" [src]="image" />
-  }
+  <div class="flex flex-row">
+    <ds-icon-button
+      icon="assets/burger-menu.svg"
+      [sizePx]="40"
+      (clicked)="menuOpen.emit()"
+    ></ds-icon-button>
+    @if (image(); as image) {
+    <img class="h-[50px] ml-8" alt="Logotipo" [src]="image" />
+    }
+  </div>
   <div class="flex items-center">
     <span class="text-contrast-300 block">
       developed by

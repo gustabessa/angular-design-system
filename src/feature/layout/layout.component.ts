@@ -5,6 +5,7 @@ import {
   DividerComponent,
 } from '@components';
 import { LayoutStore } from './layout.signal-store';
+import { MediaService } from '@shared/services';
 
 @Component({
   selector: 'ds-layout',
@@ -15,4 +16,6 @@ import { LayoutStore } from './layout.signal-store';
 })
 export class LayoutComponent {
   layoutStore = inject(LayoutStore);
+
+  mediaService = inject(MediaService);
 }

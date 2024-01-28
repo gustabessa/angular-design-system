@@ -1,10 +1,14 @@
 <div class="min-h-dvh flex flex-col">
   <ds-header
-    class="flex"
-    image="assets/angular-logo.svg"
+    class="flex sticky top-0"
+    [image]="
+      mediaService.isMobile()
+        ? 'assets/angular-logo-sm.svg'
+        : 'assets/angular-logo.svg'
+    "
     (menuOpen)="layoutStore.toggleMenu()"
   ></ds-header>
-  <main class="bg-primary flex-1">
+  <main class="bg-primary flex-1 pb-8">
     <ds-divider [spacingTop]="'0px'" [spacingBottom]="'2em'"></ds-divider>
     <ng-content></ng-content>
   </main>
