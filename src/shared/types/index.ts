@@ -1,2 +1,2 @@
 export * from './theme-colors';
-export * from './spacing';
+export * from './element-size';

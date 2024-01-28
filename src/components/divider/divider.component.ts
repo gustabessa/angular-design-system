@@ -1,5 +1,5 @@
 import { Component, input, computed } from '@angular/core';
-import { ThemeColors, Spacing } from '@shared/types';
+import { ThemeColors, ElementSize } from '@shared/types';
 import { getThemeColor } from '@shared/functions';
 
 @Component({
@@ -10,11 +10,11 @@ import { getThemeColor } from '@shared/functions';
 export class DividerComponent {
   color = input<ThemeColors>('secondary');
 
-  spacingTop = input<Spacing>();
+  spacingTop = input<ElementSize>();
 
-  spacingBottom = input<Spacing>();
+  spacingBottom = input<ElementSize>();
 
-  spacing = input<Spacing>('0px');
+  spacing = input<ElementSize>('0px');
 
   inlineStyle = computed(
     () =>
