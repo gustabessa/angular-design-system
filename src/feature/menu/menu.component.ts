@@ -18,5 +18,10 @@ export class MenuComponent {
       route: '/',
       label: 'Home',
     },
+    {
+      icon: 'assets/source-code.svg',
+      route: 'https://github.com/gustabessa/angular-design-system',
+      label: 'Ver código fonte',
+    },
   ];
 }
