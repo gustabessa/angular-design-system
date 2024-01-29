@@ -1,4 +1,5 @@
 export * from './header/header.component';
+export * from './footer/footer.component';
 export * from './drawer/drawer.component';
 export * from './menu-item/menu-item.component';
 export * from './menu-item/types';

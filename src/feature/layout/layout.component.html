@@ -8,20 +8,24 @@
     "
     (menuOpen)="layoutStore.toggleMenu()"
   ></ds-header>
-  <main class="bg-primary flex-1 pb-8">
+  <main class="flex bg-primary flex-1">
     <ds-drawer [opened]="layoutStore.isMenuOpen()">
       <ds-menu></ds-menu>
     </ds-drawer>
     <ds-divider [spacingTop]="'0px'" [spacingBottom]="'2em'"></ds-divider>
     <div
+      class="flex flex-1 flex-col"
       [class]="
         layoutStore.isMenuOpen()
-          ? 'blur-sm h-full w-full overflow-hidden cursor-pointer scroll-none'
+          ? 'blur-sm w-full overflow-hidden cursor-pointer scroll-none'
           : ''
       "
       (click)="onBackdropClicked($event)"
     >
-      <ng-content></ng-content>
+      <div class="flex-1">
+        <ng-content></ng-content>
+      </div>
+      <ds-footer></ds-footer>
     </div>
   </main>
 </div>
