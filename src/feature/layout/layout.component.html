@@ -8,7 +8,7 @@
     "
     (menuOpen)="layoutStore.toggleMenu()"
   ></ds-header>
-  <main class="flex bg-primary flex-1">
+  <main class="flex flex-1 flex-col bg-primary">
     <ds-drawer [opened]="layoutStore.isMenuOpen()">
       <ds-menu></ds-menu>
     </ds-drawer>
