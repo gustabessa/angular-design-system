@@ -5,7 +5,13 @@ import { ThemeColors, ElementSize } from '@shared/types';
 @Component({
   selector: 'ds-icon',
   standalone: true,
-  template: `<div id="icon" [style]="inlineStyle()"></div>`,
+  template: `
+    <div
+      id="icon"
+      [style]="inlineStyle()"
+      class="group-hover:!bg-secondary group-[.is-active]:!bg-secondary"
+    ></div>
+  `,
 })
 export class IconComponent {
   icon = input.required<string>();

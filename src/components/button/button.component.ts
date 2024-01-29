@@ -1,11 +1,12 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, input } from '@angular/core';
 
 @Component({
   standalone: true,
   selector: 'ds-button',
   template: `
     <button
-      class="w-full h-full rounded justify-center p-2 flex flex-row items-center hover:opacity-50"
+      class="group w-full h-full rounded justify-center p-2 flex flex-row items-center"
+      [class]="isActive() ? 'is-active' : ''"
       (click)="onClick($event)"
     >
       <ng-content></ng-content>
@@ -13,6 +14,8 @@ import { Component, EventEmitter, Output } from '@angular/core';
   `,
 })
 export class ButtonComponent {
+  isActive = input(false);
+
   @Output() click = new EventEmitter<MouseEvent>();
 
   onClick(event: MouseEvent) {

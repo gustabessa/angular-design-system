@@ -1,80 +1,40 @@
-import {
-  Component,
-  EventEmitter,
-  HostListener,
-  Output,
-  input,
-} from '@angular/core';
+import { Component, EventEmitter, Output, input } from '@angular/core';
 import {
   ButtonComponent,
-  IconComponent,
   DropdownMenuComponent,
-  IDropdownMenuItem,
+  IconComponent,
 } from '@components';
+import { DropdownThemeMenuComponent } from '../dropdown-theme-menu/dropdown-theme-menu.component';
 
 @Component({
   selector: 'ds-header',
   standalone: true,
-  imports: [ButtonComponent, IconComponent, DropdownMenuComponent],
-  templateUrl: './header.component.html',
-  styleUrl: './header.component.scss',
+  imports: [
+    ButtonComponent,
+    IconComponent,
+    DropdownMenuComponent,
+    DropdownThemeMenuComponent,
+  ],
+  template: `
+    <header class="bg-primary w-full flex justify-between px-4 py-2">
+      <div class="flex flex-row">
+        <ds-button [isActive]="isMenuOpen()" (click)="menuOpen.emit()">
+          <ds-icon icon="assets/menu.svg"></ds-icon>
+        </ds-button>
+        @if (image(); as image) {
+        <img class="h-[50px] ml-8" alt="Logotipo" [src]="image" />
+        }
+      </div>
+      <ds-dropdown-theme-menu></ds-dropdown-theme-menu>
+    </header>
+  `,
 })
 export class HeaderComponent {
-  constructor() {
-    this.applyThemeFromSystem();
-  }
+  constructor() {}
 
   image = input<string>();
 
-  themeOpen = false;
+  isMenuOpen = input.required<boolean>();
 
   @Output() menuOpen = new EventEmitter<void>();
-
-  toggleTheme() {
-    this.themeOpen = !this.themeOpen;
-  }
-
-  themeItems: IDropdownMenuItem[] = [
-    {
-      label: 'Claro',
-      action: () => {
-        this.applyTheme('theme-default');
-      },
-      icon: 'assets/sun.svg',
-    },
-    {
-      label: 'Escuro',
-      action: () => {
-        this.applyTheme('theme-dark');
-      },
-      icon: 'assets/moon.svg',
-    },
-    {
-      label: 'Sistema',
-      action: () => {
-        this.applyThemeFromSystem();
-      },
-      icon: 'assets/system.svg',
-    },
-  ];
-
-  applyTheme(theme: string) {
-    document.querySelector('html')?.setAttribute('data-theme', theme);
-  }
-
-  applyThemeFromSystem() {
-    if (
-      window.matchMedia &&
-      window.matchMedia('(prefers-color-scheme: dark)').matches
-    ) {
-      this.applyTheme('theme-dark');
-    } else {
-      this.applyTheme('theme-default');
-    }
-  }
-
-  @HostListener('document:click')
-  onDocumentClick() {
-    this.themeOpen = false;
-  }
 }

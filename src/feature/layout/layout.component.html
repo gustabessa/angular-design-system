@@ -6,6 +6,7 @@
         ? 'assets/angular-logo-sm.svg'
         : 'assets/angular-logo.svg'
     "
+    [isMenuOpen]="layoutStore.isMenuOpen()"
     (menuOpen)="layoutStore.toggleMenu()"
   ></ds-header>
   <main class="flex flex-1 flex-col bg-primary">

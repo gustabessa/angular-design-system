@@ -1,5 +1,5 @@
-export interface IDropdownMenuItem {
+export interface IDropdownMenuItem<T> {
   label: string;
-  action: () => void;
   icon?: string;
+  data?: T;
 }

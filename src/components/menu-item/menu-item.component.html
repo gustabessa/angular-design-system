@@ -1,7 +1,10 @@
 <a
   [routerLink]="[menuItem().route]"
-  class="p-2 flex flex-row items-center hover:opacity-50"
+  class="group p-2 flex flex-row items-center"
 >
   <ds-icon [icon]="menuItem().icon"></ds-icon>
-  <span class="ml-4 text-contrast text-lg">{{ menuItem().label }}</span>
+  <span
+    class="ml-4 text-contrast text-lg group-hover:text-secondary group-[.is-active]:text-secondary"
+    >{{ menuItem().label }}</span
+  >
 </a>

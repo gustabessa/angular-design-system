@@ -9,12 +9,18 @@
     aria-labelledby="options-menu"
   >
     @for (item of items(); track item.label) {
-    <ds-button (click)="item.action()">
+    <ds-button
+      (click)="itemSelected.emit(item)"
+      [isActive]="selectedItem()?.label === item.label"
+    >
       <div class="flex flex-row w-full">
         @if (item.icon; as icon) {
         <ds-icon class="mr-4" [icon]="icon" size="24px"></ds-icon>
         }
-        <span class="text-contrast text-nowrap">{{ item.label }}</span>
+        <span
+          class="text-contrast text-nowrap group-hover:text-secondary group-[.is-active]:text-secondary"
+          >{{ item.label }}</span
+        >
       </div>
     </ds-button>
     }

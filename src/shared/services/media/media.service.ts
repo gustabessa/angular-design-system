@@ -1,10 +1,12 @@
-import { Injectable, computed } from '@angular/core';
+import { Injectable, computed, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 @Injectable({ providedIn: 'root' })
 export class MediaService {
-  constructor(private readonly breakpointObserver: BreakpointObserver) {}
+  constructor() {}
+
+  breakpointObserver = inject(BreakpointObserver);
 
   small = toSignal(this.breakpointObserver.observe(Breakpoints.Small));
 
