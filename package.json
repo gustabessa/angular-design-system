@@ -5,10 +5,10 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:gh-pages": "ng build --configuration production --base-href=\"/angular-design-system/\" && cp ./dist/angular-design-system/browser/. ./dist/angular-design-system -r && rm -rf ./dist/angular-design-system/browser",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "prepare": "ng build --configuration production --base-href=\"/angular-design-system/\" && cp ./dist/angular-design-system/browser/. ./dist/angular-design-system -r && rm -rf ./dist/angular-design-system/browser",
-    "deploy": "npm run prepare && angular-cli-ghpages --dir=dist/angular-design-system"
+    "deploy:gh-pages": "npm run build:gh-pages && angular-cli-ghpages --dir=dist/angular-design-system"
   },
   "private": true,
   "dependencies": {
