@@ -86,14 +86,21 @@ export const DropdownThemeMenuStore = signalStore(
       const themeValue =
         theme.value === 'theme-system' ? getThemeFromSystem() : theme.value;
 
+      localStorage.setItem('@themes/theme-value', themeValue);
       document.querySelector('html')?.setAttribute('data-theme', themeValue);
       patchState(store, { selectedTheme: theme });
     },
   })),
   withHooks({
     onInit: (store) => {
-      const theme = store.themes().get('theme-system') as Theme;
+      const storageThemeValue = localStorage.getItem(
+        '@themes/theme-value',
+      ) as ThemeValue;
+      const theme = store
+        .themes()
+        .get(storageThemeValue ?? 'theme-system') as Theme;
       store.applyTheme(theme);
+      return null;
     },
   }),
 );
