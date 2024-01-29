@@ -1,6 +1,6 @@
 <div class="min-h-dvh flex flex-col">
   <ds-header
-    class="flex sticky top-0"
+    class="flex sticky top-0 z-50"
     [image]="
       mediaService.isMobile()
         ? 'assets/angular-logo-sm.svg'
@@ -9,8 +9,19 @@
     (menuOpen)="layoutStore.toggleMenu()"
   ></ds-header>
   <main class="bg-primary flex-1 pb-8">
-    <ds-drawer [opened]="layoutStore.menuOpen()"></ds-drawer>
+    <ds-drawer [opened]="layoutStore.isMenuOpen()">
+      <ds-menu></ds-menu>
+    </ds-drawer>
     <ds-divider [spacingTop]="'0px'" [spacingBottom]="'2em'"></ds-divider>
-    <ng-content></ng-content>
+    <div
+      [class]="
+        layoutStore.isMenuOpen()
+          ? 'blur-sm h-full w-full overflow-hidden cursor-pointer scroll-none'
+          : ''
+      "
+      (click)="onBackdropClicked($event)"
+    >
+      <ng-content></ng-content>
+    </div>
   </main>
 </div>

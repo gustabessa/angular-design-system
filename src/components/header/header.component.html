@@ -1,7 +1,7 @@
 <div class="bg-primary w-full flex justify-between px-4 py-2">
   <div class="flex flex-row">
     <ds-button (clicked)="menuOpen.emit()">
-      <ds-icon icon="assets/burger-menu.svg" [size]="'40px'"></ds-icon>
+      <ds-icon icon="assets/burger-menu.svg"></ds-icon>
     </ds-button>
     @if (image(); as image) {
     <img class="h-[50px] ml-8" alt="Logotipo" [src]="image" />

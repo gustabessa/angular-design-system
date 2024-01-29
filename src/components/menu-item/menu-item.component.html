@@ -1,1 +1,8 @@
-<p>menu-item works!</p>
+<a
+  [routerLink]="[menuItem().route]"
+  class="p-2 flex flex-row items-center hover:opacity-50"
+  href=""
+>
+  <ds-icon [icon]="menuItem().icon"></ds-icon>
+  <span class="ml-4 text-contrast text-lg">{{ menuItem().label }}</span>
+</a>

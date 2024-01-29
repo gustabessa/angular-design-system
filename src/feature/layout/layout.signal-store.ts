@@ -1,7 +1,7 @@
 import { patchState, signalStore, withMethods, withState } from '@ngrx/signals';
 
 const initialState = {
-  menuOpen: false,
+  isMenuOpen: false,
 };
 
 export const LayoutStore = signalStore(
@@ -9,7 +9,14 @@ export const LayoutStore = signalStore(
   withState(initialState),
   withMethods((store) => ({
     toggleMenu(): void {
-      patchState(store, { menuOpen: !store.menuOpen() });
+      const html = document.querySelector('html') as HTMLHtmlElement;
+      if (store.isMenuOpen()) {
+        html.style.overflow = '';
+        patchState(store, { isMenuOpen: false });
+      } else {
+        html.style.overflow = 'hidden';
+        patchState(store, { isMenuOpen: true });
+      }
     },
   })),
 );

@@ -1,0 +1,7 @@
+<div class="rounded bg-contrast-500">
+  @for (menuItem of menuItems; track menuItem.label; let isLast = $last) {
+  <ds-menu-item [menuItem]="menuItem"></ds-menu-item>
+  @if (!isLast) {
+  <ds-divider spacing="0.5em"></ds-divider>
+  } }
+</div>

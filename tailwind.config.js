@@ -13,6 +13,7 @@ module.exports = {
           200: 'var(--contrast-200)',
           300: 'var(--contrast-300)',
           400: 'var(--contrast-400)',
+          500: 'var(--contrast-500)',
         },
         secondary: 'var(--secondary)',
         black: colors.black,
