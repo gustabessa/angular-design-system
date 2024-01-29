@@ -6,12 +6,17 @@ import { Component, EventEmitter, Output } from '@angular/core';
   template: `
     <button
       class="w-full h-full rounded justify-center p-2 flex flex-row items-center hover:opacity-50"
-      (click)="clicked.emit($event)"
+      (click)="onClick($event)"
     >
       <ng-content></ng-content>
     </button>
   `,
 })
 export class ButtonComponent {
-  @Output() clicked = new EventEmitter<MouseEvent>();
+  @Output() click = new EventEmitter<MouseEvent>();
+
+  onClick(event: MouseEvent) {
+    event.stopPropagation();
+    this.click.emit(event);
+  }
 }

@@ -1,6 +1,5 @@
 import { Component, inject } from '@angular/core';
 import {
-  HeaderComponent,
   DividerComponent,
   DrawerComponent,
   FooterComponent,
@@ -8,6 +7,7 @@ import {
 import { LayoutStore } from './layout.signal-store';
 import { MediaService } from '@shared/services';
 import { MenuComponent } from '../menu/menu.component';
+import { HeaderComponent } from '../header/header.component';
 
 @Component({
   selector: 'ds-layout',
@@ -27,7 +27,7 @@ export class LayoutComponent {
 
   mediaService = inject(MediaService);
 
-  onBackdropClicked(event: MouseEvent) {
+  onBackdropclick(event: MouseEvent) {
     if (this.layoutStore.isMenuOpen()) {
       event.stopPropagation();
       this.layoutStore.toggleMenu();

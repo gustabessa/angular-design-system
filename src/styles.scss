@@ -4,8 +4,6 @@
 @tailwind utilities;
 
 @layer base {
-  @import 'themes/theme1.scss';
-  @import 'themes/theme2.scss';
-  @import 'themes/theme3.scss';
-  @import 'themes/theme4.scss';
+  @import 'themes/theme-default.scss';
+  @import 'themes/theme-dark.scss';
 }

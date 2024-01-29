@@ -1,0 +1,19 @@
+<header class="bg-primary w-full flex justify-between px-4 py-2">
+  <div class="flex flex-row">
+    <ds-button (click)="menuOpen.emit()">
+      <ds-icon icon="assets/menu.svg"></ds-icon>
+    </ds-button>
+    @if (image(); as image) {
+    <img class="h-[50px] ml-8" alt="Logotipo" [src]="image" />
+    }
+  </div>
+  <div class="relative">
+    <ds-button (click)="toggleTheme()">
+      <ds-icon size="20px" icon="assets/paint-palette.svg"></ds-icon>
+    </ds-button>
+    <ds-dropdown-menu
+      [isOpen]="themeOpen"
+      [items]="themeItems"
+    ></ds-dropdown-menu>
+  </div>
+</header>
