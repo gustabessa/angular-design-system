@@ -6,7 +6,9 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "prepare": "ng build --configuration production --base-href=\"/angular-design-system\" && cp ./dist/angular-design-system/browser/. ./dist/angular-design-system -r && rm -rf ./dist/angular-design-system/browser",
+    "deploy": "npm run prepare && angular-cli-ghpages --dir=dist/angular-design-system"
   },
   "private": true,
   "dependencies": {
