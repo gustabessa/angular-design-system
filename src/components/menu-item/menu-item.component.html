@@ -1,6 +1,7 @@
 <a
   [routerLink]="[menuItem().route]"
   class="group p-2 flex flex-row items-center"
+  [class]="isActive() ? 'is-active' : ''"
 >
   <ds-icon [icon]="menuItem().icon"></ds-icon>
   <span

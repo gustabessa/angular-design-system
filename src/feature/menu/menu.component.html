@@ -1,6 +1,9 @@
 <div class="rounded bg-contrast-500">
   @for (menuItem of menuItems; track menuItem.label; let isLast = $last) {
-  <ds-menu-item [menuItem]="menuItem"></ds-menu-item>
+  <ds-menu-item
+    [menuItem]="menuItem"
+    [isActive]="routerSignalStore.currentUrl() === menuItem.route"
+  ></ds-menu-item>
   @if (!isLast) {
   <ds-divider spacing="0.5em"></ds-divider>
   } }

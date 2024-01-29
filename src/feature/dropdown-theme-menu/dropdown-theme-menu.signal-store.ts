@@ -102,7 +102,6 @@ export const DropdownThemeMenuStore = signalStore(
         .themes()
         .get(storageThemeValue ?? 'theme-system') as Theme;
       store.applyTheme(theme);
-      return null;
     },
   }),
 );

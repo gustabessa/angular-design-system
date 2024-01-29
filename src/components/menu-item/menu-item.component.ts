@@ -13,4 +13,6 @@ import { IconComponent } from '../icon/icon.component';
 })
 export class MenuItemComponent {
   menuItem = input.required<IMenuItem>();
+
+  isActive = input.required<boolean>();
 }
