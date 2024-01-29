@@ -44,6 +44,8 @@ const themes: Map<ThemeValue, Theme> = new Map([
   ],
 ]);
 
+const THEME_VALUE_KEY = '@ds/themes/theme-value';
+
 const getThemeFromSystem = (): ThemeValue => {
   return window.matchMedia &&
     window.matchMedia('(prefers-color-scheme: dark)').matches
@@ -86,7 +88,7 @@ export const DropdownThemeMenuStore = signalStore(
       const themeValue =
         theme.value === 'theme-system' ? getThemeFromSystem() : theme.value;
 
-      localStorage.setItem('@themes/theme-value', themeValue);
+      localStorage.setItem(THEME_VALUE_KEY, themeValue);
       document.querySelector('html')?.setAttribute('data-theme', themeValue);
       patchState(store, { selectedTheme: theme });
     },
@@ -94,7 +96,7 @@ export const DropdownThemeMenuStore = signalStore(
   withHooks({
     onInit: (store) => {
       const storageThemeValue = localStorage.getItem(
-        '@themes/theme-value',
+        THEME_VALUE_KEY,
       ) as ThemeValue;
       const theme = store
         .themes()
