@@ -10,7 +10,7 @@ import { ThemeColors, ElementSize } from '@shared/types';
 export class IconComponent {
   icon = input.required<string>();
 
-  size = input<ElementSize>('32px');
+  size = input<ElementSize>('28px');
 
   iconColor = input<ThemeColors>('contrast');
 
