@@ -7,3 +7,5 @@ export * from './icon/icon.component';
 export * from './divider/divider.component';
 export * from './dropdown-menu/dropdown-menu.component';
 export * from './dropdown-menu/types';
+export * from './image-showcase/image-showcase.component';
+export * from './image-showcase/types';
