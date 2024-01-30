@@ -3,6 +3,7 @@
   <ds-menu-item
     [menuItem]="menuItem"
     [isActive]="routerSignalStore.currentUrl() === menuItem.route"
+    (itemSelected)="layoutStore.toggleMenu()"
   ></ds-menu-item>
   @if (!isLast) {
   <ds-divider spacing="0.5em"></ds-divider>

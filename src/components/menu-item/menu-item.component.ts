@@ -1,4 +1,10 @@
-import { Component, computed, input } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Output,
+  computed,
+  input,
+} from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ButtonComponent } from '../button/button.component';
 import { IMenuItem } from './types';
@@ -23,6 +29,7 @@ import { NgTemplateOutlet } from '@angular/common';
       [routerLink]="[menuItem().route]"
       class="group p-2 flex flex-row items-center"
       [class]="isActive() ? 'is-active' : ''"
+      (click)="itemSelected.emit()"
     >
       <ng-container [ngTemplateOutlet]="menuItemContent"></ng-container>
     </a>
@@ -43,4 +50,6 @@ export class MenuItemComponent {
   isExternalLink = computed(() => this.menuItem().route.startsWith('http'));
 
   isActive = input.required<boolean>();
+
+  @Output() itemSelected = new EventEmitter<void>();
 }

@@ -3,6 +3,14 @@
 @tailwind components;
 @tailwind utilities;
 
+.bg-primary {
+  transition: background-color 0.5s ease;
+}
+
+.color-transition-ease {
+  transition: color 0.5s ease;
+}
+
 @layer base {
   @import 'themes/theme-default.scss';
   @import 'themes/theme-dark.scss';
