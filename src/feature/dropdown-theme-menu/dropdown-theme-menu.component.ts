@@ -22,7 +22,7 @@ import {
         [selectedItem]="dropdownMenuThemeStore.selectedThemeMenuItem()"
         [isOpen]="dropdownMenuThemeStore.isThemeOpen()"
         [items]="dropdownMenuThemeStore.themeMenuItems()"
-        (itemSelected)="dropdownMenuThemeStore.applyTheme($event.data)"
+        (itemSelected)="dropdownMenuThemeStore.selectTheme($event.data)"
       ></ds-dropdown-menu>
     </div>
   `,

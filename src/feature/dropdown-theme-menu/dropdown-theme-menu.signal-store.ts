@@ -7,6 +7,8 @@ import {
   withMethods,
   withState,
 } from '@ngrx/signals';
+import { rxMethod } from '@ngrx/signals/rxjs-interop';
+import { EMPTY, pipe, switchMap } from 'rxjs';
 import { IDropdownMenuItem } from '@components';
 
 type ThemeValue = 'theme-default' | 'theme-dark' | 'theme-system';
@@ -84,14 +86,24 @@ export const DropdownThemeMenuStore = signalStore(
     toggleThemeMenu: (value?: boolean) => {
       patchState(store, { isThemeOpen: value ?? !store.isThemeOpen() });
     },
-    applyTheme: (theme: Theme) => {
-      const themeValue =
-        theme.value === 'theme-system' ? getThemeFromSystem() : theme.value;
-
-      localStorage.setItem(THEME_VALUE_KEY, themeValue);
-      document.querySelector('html')?.setAttribute('data-theme', themeValue);
-      patchState(store, { selectedTheme: theme });
+    selectTheme: (theme: Theme) => {
+      patchState(store, { selectedTheme: theme, isThemeOpen: false });
     },
+    applyTheme: rxMethod(
+      pipe(
+        switchMap((theme: Theme) => {
+          const themeValue =
+            theme.value === 'theme-system' ? getThemeFromSystem() : theme.value;
+
+          localStorage.setItem(THEME_VALUE_KEY, theme.value);
+          document
+            .querySelector('html')
+            ?.setAttribute('data-theme', themeValue);
+
+          return EMPTY;
+        }),
+      ),
+    ),
   })),
   withHooks({
     onInit: (store) => {
@@ -101,7 +113,9 @@ export const DropdownThemeMenuStore = signalStore(
       const theme = store
         .themes()
         .get(storageThemeValue ?? 'theme-system') as Theme;
-      store.applyTheme(theme);
+
+      store.selectTheme(theme);
+      store.applyTheme(store.selectedTheme);
     },
   }),
 );
