@@ -23,7 +23,7 @@ import { ImageShowcaseComponent, IShowcaseImage } from '@components';
     </main>
   `,
 })
-export class NotFoundComponent {
+export class NotFoundPageComponent {
   showcaseImages: IShowcaseImage[] = [
     {
       src: 'assets/blinking-cat.gif',

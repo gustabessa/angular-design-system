@@ -11,7 +11,7 @@
   ></ds-header>
   <main class="flex flex-1 flex-col bg-primary">
     <ds-drawer [opened]="layoutStore.isMenuOpen()">
-      <ds-menu></ds-menu>
+      <ds-menu [menuItems]="layoutStore.menuItems()"></ds-menu>
     </ds-drawer>
     <ds-divider [spacingTop]="'0px'" [spacingBottom]="'2em'"></ds-divider>
     <div

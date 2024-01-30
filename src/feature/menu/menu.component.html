@@ -1,10 +1,14 @@
-<div class="rounded bg-contrast-500">
-  @for (menuItem of menuItems; track menuItem.label; let isLast = $last) {
+<div class="rounded bg-contrast-500 w-full">
+  @for (menuItem of menuItems(); track menuItem.label; let isLast = $last) {
   <ds-menu-item
     [menuItem]="menuItem"
     [isActive]="routerSignalStore.currentUrl() === menuItem.route"
-    (itemSelected)="layoutStore.toggleMenu()"
-  ></ds-menu-item>
+    (itemSelected)="onItemSelected(menuItem)"
+  >
+    @if(menuItem.children; as children) {
+    <ds-menu [menuItems]="children"></ds-menu>
+    }
+  </ds-menu-item>
   @if (!isLast) {
   <ds-divider spacing="0.5em"></ds-divider>
   } }

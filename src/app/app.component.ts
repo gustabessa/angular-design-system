@@ -6,9 +6,10 @@ import { LayoutComponent } from '@feature';
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet, LayoutComponent],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
+  template: `
+    <ds-layout>
+      <router-outlet />
+    </ds-layout>
+  `,
 })
-export class AppComponent {
-  title = 'angular-design-system';
-}
+export class AppComponent {}

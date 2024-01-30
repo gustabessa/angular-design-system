@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { DividerComponent, IMenuItem, MenuItemComponent } from '@components';
 import { RouterSignalStore } from '../router/router.signal-store';
 import { LayoutStore } from '../layout/layout.signal-store';
@@ -15,16 +15,14 @@ export class MenuComponent {
 
   layoutStore = inject(LayoutStore);
 
-  menuItems: IMenuItem[] = [
-    {
-      icon: 'assets/home.svg',
-      route: '/',
-      label: 'Home',
-    },
-    {
-      icon: 'assets/source-code.svg',
-      route: 'https://github.com/gustabessa/angular-design-system',
-      label: 'Ver código fonte',
-    },
-  ];
+  menuItems = input.required<IMenuItem[]>();
+
+  onItemSelected(menuItem: IMenuItem) {
+    if (!menuItem.children) {
+      this.layoutStore.toggleMenu();
+      return;
+    }
+
+    menuItem.isExpanded = !menuItem.isExpanded;
+  }
 }
