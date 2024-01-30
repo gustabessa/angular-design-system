@@ -3,7 +3,8 @@
 @tailwind components;
 @tailwind utilities;
 
-.bg-primary {
+[class^='bg-'],
+[class*=' bg-'] {
   transition: background-color 0.5s ease;
 }
 
