@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { H1Component, PComponent } from '@components/typography';
 import { ImageShowcaseComponent, IShowcaseImage } from '@components';
+import { RouterSignalStore } from '@feature';
 
 @Component({
   selector: 'ds-not-found',
@@ -16,6 +17,9 @@ import { ImageShowcaseComponent, IShowcaseImage } from '@components';
           Quer uma mãozinha?
         </a>
       </ds-p>
+      @if(jokeMessage(); as jokeMessage) {
+      <ds-p class="text-contrast-400">{{ jokeMessage }}</ds-p>
+      }
       <ds-image-showcase
         class="self-center max-lg:w-[80dvw] lg:w-[400px] aspect-square"
         [images]="this.showcaseImages"
@@ -24,6 +28,14 @@ import { ImageShowcaseComponent, IShowcaseImage } from '@components';
   `,
 })
 export class NotFoundPageComponent {
+  routerSignalStore = inject(RouterSignalStore);
+
+  jokeMessage = computed(() => {
+    if (this.routerSignalStore.currentUrl().includes('not-found'))
+      return 'Te avisei pra não clicar... Mas já que você veio, aproveita os gifs!';
+    return '';
+  });
+
   showcaseImages: IShowcaseImage[] = [
     {
       src: 'assets/blinking-cat.gif',
