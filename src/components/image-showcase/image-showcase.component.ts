@@ -6,15 +6,26 @@ import { takeUntilDestroyed, toObservable } from '@angular/core/rxjs-interop';
   selector: 'ds-image-showcase',
   standalone: true,
   imports: [],
-  template: `<img class="w-full h-full" [src]="this.showcaseImage()?.src" />`,
+  template: `@if(this.showcaseImage(); as image) {
+    <img class="w-full h-full" [src]="image.src" />
+    }`,
 })
 export class ImageShowcaseComponent {
   constructor() {
     toObservable(this.images)
       .pipe(takeUntilDestroyed())
-      .subscribe((images) => {
-        const imageShowcase = images[this.imageIndex()];
-        this.setShowcaseImage(imageShowcase);
+      .subscribe(async (images) => {
+        const loadImagesPromises = images.map(
+          (image) =>
+            new Promise<void>((resolve, reject) => {
+              const imgElement = new Image();
+              imgElement.src = image.src;
+              imgElement.onload = () => resolve();
+            }),
+        );
+        await Promise.all(loadImagesPromises);
+        const imageToStartShowcase = images[0];
+        this.setShowcaseImage(imageToStartShowcase);
       });
   }
 
