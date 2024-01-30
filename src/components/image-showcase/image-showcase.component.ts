@@ -17,7 +17,7 @@ export class ImageShowcaseComponent {
       .subscribe(async (images) => {
         const loadImagesPromises = images.map(
           (image) =>
-            new Promise<void>((resolve, reject) => {
+            new Promise<void>((resolve) => {
               const imgElement = new Image();
               imgElement.src = image.src;
               imgElement.onload = () => resolve();
